@@ -5,17 +5,20 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenApiConfig {
 
+    @Value("${oidc-discovery-uri}")
+    private String oidcUrl;
+
     @Bean
     public OpenAPI configure() {
         final String title = "Keycloak Server";
         final String securitySchemeName = "oidc";
-        final String oidcUrl = "https://keycloak.timsanalytics.com/realms/vision/.well-known/openid-configuration";
 
         return new OpenAPI().addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
                 .components(new Components().addSecuritySchemes(securitySchemeName,

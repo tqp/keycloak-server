@@ -1,0 +1,18 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://keycloak.timsanalytics.com/realms/tims-analytics
+
+oidc-discovery-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/.well-known/openid-configuration
+
+# this is required for swagger-ui to work properly on https behind a proxy
+#server.forward-headers-strategy: framework
+
+# Be sure that this client has been created in Keycloak.
+springdoc:
+  api-docs.enabled: true
+  swagger-ui:
+    enabled: true
+    oauth.client-id: api-local
