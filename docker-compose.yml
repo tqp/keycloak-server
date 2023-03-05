@@ -6,4 +6,6 @@ services:
     container_name: keycloak-server
     ports:
       - "5091:5000"
+    environment:
+      - "SPRING_PROFILES_ACTIVE=prod"
     restart: unless-stopped
