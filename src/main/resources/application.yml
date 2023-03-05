@@ -1,3 +1,5 @@
+application.environment: "prod"
+
 spring:
   security:
     oauth2:

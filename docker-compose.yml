@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+
+  keycloak-server:
+    image: keycloak-server:latest
+    container_name: keycloak-server
+    ports:
+      - "5091:5000"
+    restart: unless-stopped

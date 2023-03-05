@@ -1,0 +1,16 @@
+# PREPARATION AND INFO FOR UPGRADES
+# Run `mvn --version` to see the version of Maven you're using.
+# Run `echo $JAVA_HOME` to see the version of Java you're using.
+# Look at the Project Stucture to see what version of Java you're using.
+
+# BUILD STAGE
+FROM maven:jdk17-alpine AS builder
+COPY src /home/app/src
+COPY pom.xml /home/app
+RUN mvn -f /home/app/pom.xml clean package
+
+# PACKAGE STAGE
+FROM openjdk:17
+COPY --from=builder /home/app/target/*.jar /home/app/main.jar
+EXPOSE 5000
+ENTRYPOINT ["java","-Dspring.profiles.active=prod","-jar","/home/app/main.jar"]

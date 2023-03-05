@@ -12,12 +12,15 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class OpenApiConfig {
 
+    @Value("${application.environment}")
+    private String env;
+
     @Value("${oidc-discovery-uri}")
     private String oidcUrl;
 
     @Bean
     public OpenAPI configure() {
-        final String title = "Keycloak Server";
+        final String title = "Keycloak Server" + " (" + env + ")";
         final String securitySchemeName = "oidc";
 
         return new OpenAPI().addSecurityItem(new SecurityRequirement().addList(securitySchemeName))
