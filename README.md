@@ -21,12 +21,11 @@ Connect to the AWS EC2 Instance:
 * Move the image file to the keycloak-server directory on the server.
   * `mv ~/temp/keycloak-server.tar ~/docker/keycloak-server/`
 * Navigate to the keycloak-server directory
-  * `cd docker/keycloak-server`
+  * `cd ~/docker/keycloak-server`
 * Stop the running Docker container.
   * `docker-compose down`
 * Remove the previous image.
-  * `docker image ls`
-  * `docker image rm <image_id>`
+  * `docker rmi keycloak-server:latest`
 * Load the image into Docker
   * `docker image load -i keycloak-server.tar`
 * Update the docker-compose.yml file to reference the proper image version.

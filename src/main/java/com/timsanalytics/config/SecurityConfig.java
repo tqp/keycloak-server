@@ -62,7 +62,7 @@ public class SecurityConfig {
         configuration.setAllowedOrigins(
                 Arrays.asList(
                         "http://localhost:4200",
-                        "https://keycloak-server.timsanalytics.com"
+                        "https://keycloak-client.timsanalytics.com"
                 )
         );
         configuration.setAllowedMethods(
