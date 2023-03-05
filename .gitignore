@@ -35,3 +35,5 @@ build/
 ### CUSTOM ###
 deploy-config/images
 deploy-config/secrets
+src/main/resources/application-local.yml
+src/main/resources/application-prod.yml
